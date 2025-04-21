@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
-const nggUrl = 'https://tools.sleeping.sbs/';
+const nggUrl = 'https://browser.lol/vm/';
 
 const proxy = createProxyMiddleware({
   target: nggUrl,
@@ -11,7 +11,7 @@ const proxy = createProxyMiddleware({
   secure: true,
   logLevel: 'debug',
   router: function(req) {
-    if (req.headers.host === 'tools.sleeping.sbs') {
+    if (req.headers.host === 'browser.lol') {
       req.headers['X-Forwarded-For'] = ''; 
       req.headers['X-Real-IP'] = '';
       req.headers['Via'] = '';
